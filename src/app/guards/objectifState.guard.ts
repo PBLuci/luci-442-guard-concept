@@ -7,11 +7,10 @@ import { FakeStateService } from '../service/fake-state.service'
 export function MatchOnStateGuard(forState: PossibleState) : CanMatchFn {
   return (route, segment) => {
     const fakeStateService = inject(FakeStateService)
-    const state = forState
 
     return fakeStateService.currentStateObs$.pipe(
       map( currentState => {
-        return currentState === state
+        return currentState === forState
       })
     )
   }
