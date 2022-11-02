@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { FakeStateService } from '../service/fake-state.service'
 
 @Component({
   selector: 'app-state1',
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class State1Component implements OnInit {
 
-  constructor() { }
+  constructor(public fakeService: FakeStateService) { }
 
   ngOnInit(): void {
   }
-
 }

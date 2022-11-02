@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
+import { MatchOnStateGuard } from './guards/objectifState.guard'
 import { HomeComponent } from './home/home.component'
 import { ObjectifsComponent } from './objectifs/objectifs.component'
 import { State1Component } from './state1/state1.component'
@@ -13,24 +14,43 @@ const routes: Routes = [
   },
   {
     path:'objectifs',
-    component: ObjectifsComponent
+    component: ObjectifsComponent,
+    canMatch: [MatchOnStateGuard('objectifs')],
+    data: {
+      reuseRoute: false
+    }
   },
   {
-    path: 'state-1',
-    component: State1Component
+    path: 'objectifs',
+    component: State1Component,
+    canMatch: [MatchOnStateGuard('first')],
+    data: {
+      reuseRoute: false
+    }
   },
   {
-    path: 'state-2',
-    component: State2Component
+    path: 'objectifs',
+    component: State2Component,
+    canMatch: [MatchOnStateGuard('second')],
+    data: {
+      reuseRoute: false
+    }
   },
   {
-    path: 'state-3',
-    component: State3Component
+    path: 'objectifs',
+    component: State3Component,
+    canMatch: [MatchOnStateGuard('third')],
+    data: {
+      reuseRoute: false
+    }
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, {
+    onSameUrlNavigation: 'reload'
+  })],
+  exports: [RouterModule],
+
 })
 export class AppRoutingModule { }

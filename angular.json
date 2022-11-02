@@ -102,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "luci-442-guard-concept"
+  "cli": {
+    "analytics": false
+  }
 }
